@@ -7,9 +7,9 @@ var Person = Backbone.Model.extend({
     console.log("I'm alive!");
   }//,
   //declarado en model
-  //fullName: function() {
-  //  return this.get('name') + " " + this.get('lastName');
-  //}
+  /*fullName: function() {
+    return this.get('name') + " " + this.get('lastName');
+  }*/
 });
 
 var People = Backbone.Collection.extend({
@@ -25,20 +25,16 @@ var People = Backbone.Collection.extend({
 
 PersonViewModel = kb.ViewModel.extend({
   constructor: function(model) {
-    kb.observables(model, {
-      name: {
-        key: 'name',
-        write: true
-      },
-      lastName: {
-        key: 'lastName',
-        write: true
-      },
+    this.name = kb.observable(model, {
+      key: 'name'
+    }, this);
+    this.lastName = kb.observable(model, {
+      key: 'lastName'
     }, this);
     this.fullName = ko.computed(function() {
       return this.name() + " " + this.lastName();
     }, this);
-    return this;
+    //return this;
   }
 });
 
@@ -47,11 +43,11 @@ PersonViewModel = kb.ViewModel.extend({
 //var person_view_model = new PersonViewModel(person); // solamente es necesario instanciarlo si se lo va a bindear
 
 var people_collection = new People();
-people_collection.add(//[
-  //{name: 'Pepe', lastName: 'Iglesias'},
-  //{name: 'Ronaldinho', lastName: 'Gaullo'}
-//]
-  people_array
+people_collection.add([
+  {name: 'Pepe', lastName: 'Iglesias'},
+  {name: 'Ronaldinho', lastName: 'Gaullo'}
+]
+//  people_array
 );
 
 //Backbone.sync = function(method, model, options) {
@@ -61,8 +57,7 @@ people_collection.add(//[
 
 var PeopleViewModel = kb.ViewModel.extend({
   constructor: function(collection) {
-    this.people = ko.observableArray([]);
-    kb.collectionObservable(collection, this.people, {
+    this.people = kb.collectionObservable(collection, {
       view_model: PersonViewModel
     });
     return this;
