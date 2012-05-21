@@ -2,10 +2,9 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'knockout',
   'knockback',
   'models/person'
-], function($, _, Backbone, ko, kb, personModel) {
+], function($, _, Backbone, Knockback, personModel) {
   var personViewModel = kb.ViewModel.extend({
     constructor: function(model) {
       this.name = kb.observable(model, {

@@ -2,11 +2,9 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'knockout',
   'knockback',
-  'views/person'//,
-  //'collections/people'
-], function($, _, Backbone, ko, kb, personViewModel) {
+  'views/person'
+], function($, _, Backbone, Knockback, personViewModel) {
   var peopleViewModel = kb.ViewModel.extend({
     constructor: function(collection) {
       this.people = kb.collectionObservable(collection, {

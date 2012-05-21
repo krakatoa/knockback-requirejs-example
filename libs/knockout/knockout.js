@@ -1,6 +1,5 @@
 define([
-  'underscore',
-  'libs/knockout/knockout-min'
-], function(_) {
+  'libs/knockout/knockout-min',
+], function(ko) {
   return ko;
 });

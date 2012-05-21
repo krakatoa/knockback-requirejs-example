@@ -1,11 +1,8 @@
 define([
   'jquery',
-  'backbone',
-  'knockout',
-  'knockback',
   'collections/people',
   'views/people'
-], function($, Backbone, ko, kb, peopleCollection, peopleViewModel) {
+], function($, peopleCollection, peopleViewModel) {
   var initialize = function() {
     //peopleCollection.add([
     //  {name: 'Pepe', lastName: 'Iglesias'},

@@ -3,8 +3,8 @@ require.config({
     jquery: 'libs/jquery/jquery-min',
     underscore: 'libs/underscore/underscore-min',
     backbone: 'libs/backbone/backbone-min',
-    knockout: 'libs/knockout/knockout-min',
-    knockback: 'libs/knockback/knockback'
+    knockback: 'libs/knockback/knockback',
+    knockout: 'libs/knockout/knockout'
   }
 });
 
